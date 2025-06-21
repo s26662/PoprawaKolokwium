@@ -12,4 +12,6 @@ public class Task
     [Required]
     [MaxLength(200)]
     public string Description { get; set; }
+    
+    public ICollection<Record> Records { get; set; }
 }

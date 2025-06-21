@@ -15,4 +15,6 @@ public class Student
     [Required]
     [MaxLength(250)]
     public string Email { get; set; }
+    
+    public ICollection<Record> Records { get; set; }
 }

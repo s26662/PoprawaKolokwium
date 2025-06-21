@@ -30,10 +30,13 @@ public class RecordService : IRecordService
 
         if (languageId.HasValue)
             query = query.Where(r => r.IdLanguage == languageId);
+
         if (taskId.HasValue)
             query = query.Where(r => r.IdTask == taskId);
+
         if (from.HasValue)
             query = query.Where(r => r.CreatedAt >= from.Value);
+
         if (to.HasValue)
             query = query.Where(r => r.CreatedAt <= to.Value);
 

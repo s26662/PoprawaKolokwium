@@ -18,14 +18,14 @@ public class RecordsController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAll([FromQuery] int? languageId, [FromQuery] int? taskId, [FromQuery] DateTime? from, [FromQuery] DateTime? to)
+    public async Task<IActionResult> GetAllAsync([FromQuery] int? languageId, [FromQuery] int? taskId, [FromQuery] DateTime? from, [FromQuery] DateTime? to)
     {
         var records = await _service.GetRecordsAsync(languageId, taskId, from, to);
         return Ok(records);
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create([FromBody] CreateRecordRequestDto request)
+    public async Task<IActionResult> CreateAsync([FromBody] CreateRecordRequestDto request)
     {
         var result = await _service.CreateRecordAsync(request);
         if (!result.Success)

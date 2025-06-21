@@ -9,6 +9,7 @@ public class ExamDbContext : DbContext
 {
     DbSet<Language> Languages { get; set; }
     DbSet<Task> Tasks { get; set; }
+    DbSet<Student> Students { get; set; }
     protected ExamDbContext()
     {
     }

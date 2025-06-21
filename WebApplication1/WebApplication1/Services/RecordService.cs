@@ -74,11 +74,11 @@ public class RecordService : IRecordService
     {
         var student = await _context.Students.FindAsync(request.IdStudent);
         if (student == null)
-            return (false, "Student not found");
+            return (false, "Student nie znaleziony");
 
         var language = await _context.Languages.FindAsync(request.IdLanguage);
         if (language == null)
-            return (false, "Language not found");
+            return (false, "Language nie  znaleziony");
 
         Model.Task task = null;
 
@@ -86,7 +86,7 @@ public class RecordService : IRecordService
         {
             task = await _context.Tasks.FindAsync(request.Task.Id.Value);
             if (task == null)
-                return (false, "Task with given ID not found");
+                return (false, "Task o podanym Id nie znaleziono");
         }
         else if (!string.IsNullOrWhiteSpace(request.Task?.Name) && !string.IsNullOrWhiteSpace(request.Task.Description))
         {
@@ -100,7 +100,7 @@ public class RecordService : IRecordService
         }
         else
         {
-            return (false, "Either task ID or task name and description must be provided");
+            return (false, "Należy podać identyfikator zadania lub nazwę i opis zadania.");
         }
 
         var record = new Record
@@ -115,6 +115,6 @@ public class RecordService : IRecordService
         _context.Records.Add(record);
         await _context.SaveChangesAsync();
 
-        return (true, "Record created");
+        return (true, "Record stworzono");
     }
 }

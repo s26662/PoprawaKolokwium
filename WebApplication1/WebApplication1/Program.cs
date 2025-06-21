@@ -15,6 +15,7 @@ public class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
         
+        //Scope
         builder.Services.AddScoped<IRecordService, RecordService>();
         
         string? connectionString = builder.Configuration.GetConnectionString("DefaultConnection");

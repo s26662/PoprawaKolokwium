@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApplication1.Model;
+using WebApplication1.Model.DTOs;
 using WebApplication1.Services;
 
 namespace WebApplication1.Controllers;
@@ -17,10 +18,20 @@ public class RecordsController : ControllerBase
     }
 
     [HttpGet]
-    [Route("{id}")]
-    public async Task<ActionResult<Record>> GetRecordAsync([FromRoute] string id)
+    public async Task<IActionResult> GetAll([FromQuery] int? languageId, [FromQuery] int? taskId, [FromQuery] DateTime? from, [FromQuery] DateTime? to)
     {
-        return Ok();
+        var records = await _service.GetRecordsAsync(languageId, taskId, from, to);
+        return Ok(records);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Create([FromBody] CreateRecordRequestDto request)
+    {
+        var result = await _service.CreateRecordAsync(request);
+        if (!result.Success)
+            return BadRequest(result.Message);
+
+        return Created("", result.Message);
     }
 
 }

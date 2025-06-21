@@ -2,9 +2,10 @@
 
 public class RecordDto
 {
-    public int RecordId { get; set; }
-    public string StudentName { get; set; }
-    public string Language { get; set; }
-    public string Title { get; set; }
-    public DateTime CreatedAt { get; set; }
+    public int Id { get; set; }
+    public LanguageDto Language { get; set; }
+    public TaskDto Task { get; set; }
+    public StudentDto Student { get; set; }
+    public int ExecutionTime { get; set; }
+    public DateTime Created { get; set; }
 }

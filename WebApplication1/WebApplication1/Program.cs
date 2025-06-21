@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.DAL;
+using WebApplication1.Model;
+using WebApplication1.Services;
 
 namespace WebApplication1;
 
@@ -33,6 +35,8 @@ public class Program
             app.UseSwagger();
             app.UseSwaggerUI();
         }
+        
+        //builder.Services.AddScoped<IRecordService, RecordService>();
 
         app.UseHttpsRedirection();
         
